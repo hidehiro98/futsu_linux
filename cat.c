@@ -12,9 +12,14 @@ int
 main(int argc, char *argv[])
 {
     int i;
+    int n;
+    unsigned char buf[2];
 
     if (argc < 2) {
-        fprintf(stderr, "%s: file name not given\n", argv[0]);
+        // fprintf(stderr, "%s: file name not given\n", argv[0]);
+        n = read(STDIN_FILENO, buf, sizeof buf);
+        printf("%d\n", n);
+        write(STDOUT_FILENO, buf, n);
         exit(1);
     }
     for (i = 1; i < argc; i++) {
